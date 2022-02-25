@@ -1,4 +1,23 @@
-<div class="container">
-  <p><%= @list.name %></p>
+<div id="banner">
+    <h1 class="text-center"><%= @list.name %></h1>
+    <p class="text-center">This is your list</p>
+  </div>
 
+  <%= link_to "Create Bookmark", new_list_bookmark_path(@list.id), class: "btn btn-primary" %>
+
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card" style="width: 25rem;">
+      <%= image_tag "pokemon.jpeg" %>
+      <div class="card-body">
+        <h3 class="card-title"><%= bookmark.movie.title %></h3>
+        <h6 class="card-subtitle mb-2 text-muted"><%= bookmark.movie.rating %></h6>
+        <p class="card-text"><%= bookmark.movie.overview %>.</p>
+
+        <div class="card-body">
+          <p class="card-link"><%= bookmark.comment %></p>
+          <a href="#" class="card-link">Delete</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
